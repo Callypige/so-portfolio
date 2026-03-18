@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="nb" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCF434"/>
+      <stop offset="40%" style="stop-color:#FFFFFF"/>
+      <stop offset="60%" style="stop-color:#9C59D1"/>
+      <stop offset="100%" style="stop-color:#2C2C2C"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#nb)"/>
+  <text x="32" y="43" font-family="Georgia, serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#1a1a1a" opacity="0.85">SN</text>
+</svg>
