@@ -1,13 +1,10 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import GeoBackground from "@/components/GeoBackground";
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "So' Nourry Payn — Développeur fullstack Python & React",
-  description: "Portfolio de So' Nourry Payn, développeur fullstack Python, Django, TypeScript, React et Next.js.",
-};
+import { motion } from "framer-motion";
 
 const stack = ["Python", "Django", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker"];
 const mainStack = ["Python", "Django", "TypeScript", "React", "Next.js"];
@@ -50,6 +47,19 @@ const projects = [
   },
 ];
 
+const fadeUp = (delay: number) => ({
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5, delay, ease: "easeOut" as const },
+});
+
+const fadeIn = (delay: number) => ({
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true },
+  transition: { duration: 0.5, delay, ease: "easeOut" as const },
+});
+
 export default function Home() {
   return (
     <>
@@ -60,7 +70,7 @@ export default function Home() {
         <div className="relative z-10 max-w-3xl mx-auto px-6 py-8">
 
           {/* Nav */}
-          <nav className="flex justify-between items-center pb-14">
+          <motion.nav {...fadeUp(0)} className="flex justify-between items-center pb-14">
             <span className="font-bold text-sm">
               so.<span className="text-violet-600">dev</span>
             </span>
@@ -69,30 +79,32 @@ export default function Home() {
               <a href="#projets" className="text-xs text-gray-400 hover:text-gray-900 transition-colors">Projets</a>
               <a href="https://github.com/callypige" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-400 hover:text-gray-900 transition-colors">GitHub</a>
             </div>
-          </nav>
+          </motion.nav>
 
-          
           {/* Hero */}
           <section className="py-12 pb-20 flex flex-col-reverse sm:flex-row items-start justify-between gap-12">
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-300 rounded-full px-4 py-1.5 text-xs text-yellow-800 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block" />
-                Disponible pour de nouvelles opportunités
-              </div>
 
-              <h1 className="text-5xl font-bold leading-tight tracking-tighter mb-6">
+              <motion.div {...fadeUp(0.1)}>
+                <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-300 rounded-full px-4 py-1.5 text-xs text-yellow-800 mb-8">
+                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block" />
+                  Disponible pour de nouvelles opportunités
+                </div>
+              </motion.div>
+
+              <motion.h1 {...fadeUp(0.2)} className="text-5xl font-bold leading-tight tracking-tighter mb-6">
                 Développeur fullstack
                 <br />
                 <span className="text-violet-600">Python et React</span>
-              </h1>
+              </motion.h1>
 
-              <h3 className="text-gray-500 text-base leading-relaxed max-w-md mb-8 font-light">
+              <motion.p {...fadeUp(0.3)} className="text-gray-500 text-base leading-relaxed max-w-md mb-8 font-light">
                 Salut, je suis So&apos; Nourry Payn. Je construis des applications web robustes
                 et des APIs performantes. Passionné par le clean code et les architectures
                 qui tiennent dans le temps.
-              </h3>
+              </motion.p>
 
-              <div className="flex flex-wrap gap-2 mb-8">
+              <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-2 mb-8">
                 {stack.map((s) => (
                   <span
                     key={s}
@@ -106,9 +118,9 @@ export default function Home() {
                     {s}
                   </span>
                 ))}
-              </div>
+              </motion.div>
 
-              <div className="flex gap-3">
+              <motion.div {...fadeUp(0.5)} className="flex gap-3">
                 <a href="#projets" className="text-sm font-medium px-6 py-2.5 rounded-lg bg-violet-600 text-white hover:opacity-85 transition-opacity">
                   Voir mes projets
                 </a>
@@ -118,10 +130,10 @@ export default function Home() {
                 <Link href="/cv" className="text-sm font-medium px-6 py-2.5 rounded-lg border border-gray-200 text-gray-500 bg-white hover:border-violet-400 hover:text-violet-600 transition-colors">
                   Voir mon CV
                 </Link>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="shrink-0 pt-8">
+            <motion.div {...fadeUp(0.2)} className="shrink-0 pt-8">
               <Image
                 src="/avatar_so_nourry.jpg"
                 alt="So' Nourry Payn"
@@ -129,66 +141,66 @@ export default function Home() {
                 height={160}
                 className="rounded-full border-4 border-violet-100"
               />
-            </div>
+            </motion.div>
           </section>
 
           <hr className="border-[#f0ece4] mb-12" />
 
           {/* Projets */}
-            <section id="projets" className="mb-16">
-              <p className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">projets</p>
-              <div className="flex flex-col gap-4">
-                {projects.map((p) => (
-                  <a
-                    key={p.title}
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex justify-between items-start gap-6 hover:border-violet-200 transition-colors"
-                  >
-                    <div>
-                      <div className="w-10 h-10 rounded-lg bg-yellow-50 border border-yellow-200 flex items-center justify-center text-lg mb-4">
-                        {p.icon}
-                      </div>
-                      <p className="font-semibold text-base text-gray-900 mb-2">{p.title}</p>
-                      <p className="text-sm text-gray-500 leading-relaxed max-w-lg">{p.desc}</p>
-                      <div className="flex gap-2 mt-4 flex-wrap">
-                        {p.tags.map((t) => (
-                          <span key={t} className="text-xs text-violet-600 bg-violet-50 border border-violet-100 px-3 py-1 rounded-full">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
+          <section id="projets" className="mb-16">
+            <motion.p {...fadeIn(0)} className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">projets</motion.p>
+            <div className="flex flex-col gap-4">
+              {projects.map((p, i) => (
+                <motion.a
+                  key={p.title}
+                  {...fadeIn(i * 0.1)}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex justify-between items-start gap-6 hover:border-violet-200 transition-colors"
+                >
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-yellow-50 border border-yellow-200 flex items-center justify-center text-lg mb-4">
+                      {p.icon}
                     </div>
-                    <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl mt-1 shrink-0">
-                      ↗
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </section>
+                    <p className="font-semibold text-base text-gray-900 mb-2">{p.title}</p>
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-lg">{p.desc}</p>
+                    <div className="flex gap-2 mt-4 flex-wrap">
+                      {p.tags.map((t) => (
+                        <span key={t} className="text-xs text-violet-600 bg-violet-50 border border-violet-100 px-3 py-1 rounded-full">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl mt-1 shrink-0">
+                    ↗
+                  </span>
+                </motion.a>
+              ))}
+            </div>
+          </section>
 
           <hr className="border-[#f0ece4] mb-12" />
 
           {/* About */}
           <section id="about" className="mb-16">
-            <p className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">A propos</p>
+            <motion.p {...fadeIn(0)} className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">A propos</motion.p>
             <div className="grid grid-cols-2 gap-3">
-              <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
+              <motion.div {...fadeIn(0.1)} className="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
                 <p className="text-3xl font-bold text-violet-600">5+</p>
-                <p className="text-xs text-gray-400 mt-1">ans d&apos;Expérience</p>
-              </div>
-              <div className="bg-white border border-[#f0ece4] rounded-xl p-5">
+                <p className="text-xs text-gray-400 mt-1">ans d&apos;expérience</p>
+              </motion.div>
+              <motion.div {...fadeIn(0.2)} className="bg-white border border-[#f0ece4] rounded-xl p-5">
                 <p className="text-3xl font-bold text-violet-600">5</p>
-                <p className="text-xs text-gray-400 mt-1">Projets sur GitHub</p>
-              </div>
-              <div className="col-span-2 bg-white border border-[#f0ece4] rounded-xl p-5 text-sm text-gray-500 leading-relaxed">
+                <p className="text-xs text-gray-400 mt-1">projets sur GitHub</p>
+              </motion.div>
+              <motion.div {...fadeIn(0.3)} className="col-span-2 bg-white border border-[#f0ece4] rounded-xl p-5 text-sm text-gray-500 leading-relaxed">
                 <Link href="/cv" className="text-xs text-gray-400 hover:text-gray-900 transition-colors">Voir mon CV</Link>
-              </div>
+              </motion.div>
             </div>
           </section>
 
-          {/* Footer */}
           <Footer />
 
         </div>
