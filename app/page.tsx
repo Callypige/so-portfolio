@@ -73,7 +73,7 @@ export default function Home() {
 
           
           {/* Hero */}
-          <section className="py-12 pb-20 flex items-start justify-between gap-12">
+          <section className="py-12 pb-20 flex flex-col-reverse sm:flex-row items-start justify-between gap-12">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-300 rounded-full px-4 py-1.5 text-xs text-yellow-800 mb-8">
                 <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 inline-block" />
