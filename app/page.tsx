@@ -1,11 +1,7 @@
-"use client";
-
 import Footer from "@/components/Footer";
 import GeoBackground from "@/components/GeoBackground";
 import Image from "next/image";
 import Link from "next/link";
-
-import { useScroll, useTransform, motion } from "framer-motion";
 
 export { metadata } from "./metadata";
 
@@ -51,9 +47,6 @@ const projects = [
 ];
 
 export default function Home() {
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 200], [0, -120]);
-  const heroOpacity = useTransform(scrollY, [0, 200], [1, 0]);
   return (
     <>
       <main className="relative min-h-screen bg-[#faf9f5] text-[#1a1a1a] overflow-x-hidden">
@@ -62,7 +55,6 @@ export default function Home() {
 
         <div className="relative z-10 max-w-3xl mx-auto px-6 py-8">
 
-          {/* Nav */}
           <nav className="flex justify-between items-center pb-14">
             <span className="font-bold text-sm">
               so.<span className="text-violet-600">dev</span>
@@ -74,8 +66,6 @@ export default function Home() {
             </div>
           </nav>
 
-          
-          {/* Hero */}
           <section className="py-12 pb-20 flex flex-col-reverse sm:flex-row items-start justify-between gap-12">
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-yellow-50 border border-yellow-300 rounded-full px-4 py-1.5 text-xs text-yellow-800 mb-8">
@@ -83,19 +73,17 @@ export default function Home() {
                 Disponible pour de nouvelles opportunités
               </div>
 
-              <motion.div style={{ y: heroY, opacity: heroOpacity }}>
               <h1 className="text-5xl font-bold leading-tight tracking-tighter mb-6">
                 Développeur fullstack
                 <br />
                 <span className="text-violet-600">Python et React</span>
               </h1>
-            </motion.div>
 
-              <h3 className="text-gray-500 text-base leading-relaxed max-w-md mb-8 font-light">
+              <p className="text-gray-500 text-base leading-relaxed max-w-md mb-8 font-light">
                 Salut, je suis So&apos; Nourry Payn. Je construis des applications web robustes
                 et des APIs performantes. Passionné par le clean code et les architectures
                 qui tiennent dans le temps.
-              </h3>
+              </p>
 
               <div className="flex flex-wrap gap-2 mb-8">
                 {stack.map((s) => (
@@ -139,53 +127,51 @@ export default function Home() {
 
           <hr className="border-[#f0ece4] mb-12" />
 
-          {/* Projets */}
-            <section id="projets" className="mb-16">
-              <p className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">projets</p>
-              <div className="flex flex-col gap-4">
-                {projects.map((p) => (
-                  <a
-                    key={p.title}
-                    href={p.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex justify-between items-start gap-6 hover:border-violet-200 transition-colors"
-                  >
-                    <div>
-                      <div className="w-10 h-10 rounded-lg bg-yellow-50 border border-yellow-200 flex items-center justify-center text-lg mb-4">
-                        {p.icon}
-                      </div>
-                      <p className="font-semibold text-base text-gray-900 mb-2">{p.title}</p>
-                      <p className="text-sm text-gray-500 leading-relaxed max-w-lg">{p.desc}</p>
-                      <div className="flex gap-2 mt-4 flex-wrap">
-                        {p.tags.map((t) => (
-                          <span key={t} className="text-xs text-violet-600 bg-violet-50 border border-violet-100 px-3 py-1 rounded-full">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
+          <section id="projets" className="mb-16">
+            <p className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">projets</p>
+            <div className="flex flex-col gap-4">
+              {projects.map((p) => (
+                <a
+                  key={p.title}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex justify-between items-start gap-6 hover:border-violet-200 transition-colors"
+                >
+                  <div>
+                    <div className="w-10 h-10 rounded-lg bg-yellow-50 border border-yellow-200 flex items-center justify-center text-lg mb-4">
+                      {p.icon}
                     </div>
-                    <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl mt-1 shrink-0">
-                      ↗
-                    </span>
-                  </a>
-                ))}
-              </div>
-            </section>
+                    <p className="font-semibold text-base text-gray-900 mb-2">{p.title}</p>
+                    <p className="text-sm text-gray-500 leading-relaxed max-w-lg">{p.desc}</p>
+                    <div className="flex gap-2 mt-4 flex-wrap">
+                      {p.tags.map((t) => (
+                        <span key={t} className="text-xs text-violet-600 bg-violet-50 border border-violet-100 px-3 py-1 rounded-full">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl mt-1 shrink-0">
+                    ↗
+                  </span>
+                </a>
+              ))}
+            </div>
+          </section>
 
           <hr className="border-[#f0ece4] mb-12" />
 
-          {/* About */}
           <section id="about" className="mb-16">
             <p className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">A propos</p>
             <div className="grid grid-cols-2 gap-3">
               <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-5">
                 <p className="text-3xl font-bold text-violet-600">5+</p>
-                <p className="text-xs text-gray-400 mt-1">ans d&apos;Expérience</p>
+                <p className="text-xs text-gray-400 mt-1">ans d&apos;expérience</p>
               </div>
               <div className="bg-white border border-[#f0ece4] rounded-xl p-5">
                 <p className="text-3xl font-bold text-violet-600">5</p>
-                <p className="text-xs text-gray-400 mt-1">Projets sur GitHub</p>
+                <p className="text-xs text-gray-400 mt-1">projets sur GitHub</p>
               </div>
               <div className="col-span-2 bg-white border border-[#f0ece4] rounded-xl p-5 text-sm text-gray-500 leading-relaxed">
                 <Link href="/cv" className="text-xs text-gray-400 hover:text-gray-900 transition-colors">Voir mon CV</Link>
@@ -193,7 +179,6 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Footer */}
           <Footer />
 
         </div>
