@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function GeoBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
       <motion.div
         className="absolute w-80 h-80 rounded-full bg-yellow-300 opacity-15 -top-20 -right-16"
         animate={{ y: [0, 20, 0], x: [0, -10, 0] }}
