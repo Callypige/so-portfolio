@@ -181,7 +181,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-gray-300 group-hover:text-violet-500 transition-all text-xl"
                     >
-                      ↗
+                      Lien Github ↗
                     </a>
                     {p.live && (
                       <a
