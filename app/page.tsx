@@ -8,7 +8,31 @@ export { metadata } from "./metadata";
 const stack = ["Python", "Django", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker"];
 const mainStack = ["Python", "Django", "TypeScript", "React", "Next.js"];
 
-const projects = [
+interface Project {
+  icon: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  href: string;
+  live?: string; // optional — only for deployed projects
+}
+
+const projects: Project[] = [
+  {
+    icon: "🍅",
+    title: "FocusPomomi",
+    desc: "Application de gestion de tâches intégrée à la technique Pomodoro. Créer une tâche démarre automatiquement le timer. Récompenses de fruits à la complétion.",
+    tags: ["Next.js", "TypeScript", "MongoDB", "TanStack Query"],
+    href: "https://github.com/Callypige/FocusPomomi",
+    live: "https://focus-pomomi-33a7qnnz2-callypige.vercel.app",
+  },
+  {
+    icon: "🌙",
+    title: "Dreamology Diary",
+    desc: "App Next.js pour gérer et tracker ses rêves en privé. Construit avec MongoDB Atlas, NextAuth.js et React.",
+    tags: ["Next.js", "MongoDB", "NextAuth"],
+    href: "https://github.com/callypige/dreamology-diary",
+  },
   {
     icon: "⚙",
     title: "DataFeedParserPy",
@@ -36,13 +60,6 @@ const projects = [
     desc: "Application Next.js pour suivre les discussions réglementaires sur les réseaux sociaux sur les technologies émergentes.",
     tags: ["Next.js", "TypeScript", "Reddit"],
     href: "https://github.com/callypige/nextjs-trends-feed",
-  },
-  {
-    icon: "🌙",
-    title: "Dreamology Diary",
-    desc: "App Next.js pour gérer et tracker ses rêves en privé. Construit avec MongoDB Atlas, NextAuth.js et React.",
-    tags: ["Next.js", "MongoDB", "NextAuth"],
-    href: "https://github.com/callypige/dreamology-diary",
   },
 ];
 
@@ -152,9 +169,22 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                  <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl mt-1 shrink-0">
-                    ↗
-                  </span>
+
+                  {/* GitHub arrow + optional live link */}
+                  <div className="flex flex-col items-end gap-2 shrink-0 mt-1">
+                    <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl">↗</span>
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="text-xs text-violet-400 hover:text-violet-600 hover:underline transition-colors"
+                      >
+                        Live →
+                      </a>
+                    )}
+                  </div>
                 </a>
               ))}
             </div>
@@ -170,7 +200,7 @@ export default function Home() {
                 <p className="text-xs text-gray-400 mt-1">ans d&apos;expérience</p>
               </div>
               <div className="bg-white border border-[#f0ece4] rounded-xl p-5">
-                <p className="text-3xl font-bold text-violet-600">5</p>
+                <p className="text-3xl font-bold text-violet-600">6</p>
                 <p className="text-xs text-gray-400 mt-1">projets sur GitHub</p>
               </div>
               <div className="col-span-2 bg-white border border-[#f0ece4] rounded-xl p-5 text-sm text-gray-500 leading-relaxed">
