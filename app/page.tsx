@@ -14,7 +14,7 @@ interface Project {
   desc: string;
   tags: string[];
   href: string;
-  live?: string; // optional — only for deployed projects
+  live?: string;
 }
 
 const projects: Project[] = [
@@ -148,14 +148,17 @@ export default function Home() {
             <p className="text-xs font-medium text-gray-300 tracking-widest uppercase mb-6">projets</p>
             <div className="flex flex-col gap-4">
               {projects.map((p) => (
-                <a
+                <div
                   key={p.title}
-                  href={p.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex justify-between items-start gap-6 hover:border-violet-200 transition-colors"
                 >
-                  <div>
+                  {/* Left — project info links to GitHub */}
+                  <a
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 min-w-0"
+                  >
                     <div className="w-10 h-10 rounded-lg bg-yellow-50 border border-yellow-200 flex items-center justify-center text-lg mb-4">
                       {p.icon}
                     </div>
@@ -168,24 +171,30 @@ export default function Home() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </a>
 
-                  {/* GitHub arrow + optional live link */}
+                  {/* Right — GitHub arrow + optional live link */}
                   <div className="flex flex-col items-end gap-2 shrink-0 mt-1">
-                    <span className="text-gray-300 group-hover:text-violet-500 transition-all text-xl">↗</span>
+                    <a
+                      href={p.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-300 group-hover:text-violet-500 transition-all text-xl"
+                    >
+                      ↗
+                    </a>
                     {p.live && (
                       <a
                         href={p.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        onClick={(e) => e.stopPropagation()}
                         className="text-xs text-violet-400 hover:text-violet-600 hover:underline transition-colors"
                       >
                         Live →
                       </a>
                     )}
                   </div>
-                </a>
+                </div>
               ))}
             </div>
           </section>
