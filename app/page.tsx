@@ -24,7 +24,7 @@ const projects: Project[] = [
     desc: "Application de gestion de tâches intégrée à la technique Pomodoro. Créer une tâche démarre automatiquement le timer. Récompenses de fruits à la complétion.",
     tags: ["Next.js", "TypeScript", "MongoDB", "TanStack Query"],
     href: "https://github.com/Callypige/FocusPomomi",
-    live: "https://focus-pomomi-33a7qnnz2-callypige.vercel.app",
+    live: "https://focus-pomomi.vercel.app/"
   },
   {
     icon: "🌙",
