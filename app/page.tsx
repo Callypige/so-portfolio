@@ -15,6 +15,7 @@ interface Project {
   tags: string[];
   href: string;
   live?: string;
+  preview?: string;
 }
 
 const projects: Project[] = [
@@ -24,7 +25,8 @@ const projects: Project[] = [
     desc: "Application de gestion de tâches intégrée à la technique Pomodoro. Créer une tâche démarre automatiquement le timer. Récompenses de fruits à la complétion.",
     tags: ["Next.js", "TypeScript", "MongoDB", "TanStack Query"],
     href: "https://github.com/Callypige/FocusPomomi",
-    live: "https://www.focuspomomi.website"
+    live: "https://www.focuspomomi.website",
+    preview: "/focuspomomi-preview.png"
   },
   {
     icon: "🌙",
@@ -173,8 +175,17 @@ export default function Home() {
                     </div>
                   </a>
 
-                  {/* Right — GitHub arrow + optional live link */}
+                  {/* Right — preview image + GitHub arrow + optional live link */}
                   <div className="flex flex-col items-end gap-2 shrink-0 mt-1">
+                    {p.preview && (
+                      <Image
+                        src={p.preview}
+                        alt={`Aperçu ${p.title}`}
+                        width={320}
+                        height={200}
+                        className="rounded-lg border border-[#f0ece4] max-w-xs w-full h-auto object-cover"
+                      />
+                    )}
                     <a
                       href={p.href}
                       target="_blank"
