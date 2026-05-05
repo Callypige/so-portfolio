@@ -25,7 +25,7 @@ const projects: Project[] = [
     desc: "Application de gestion de tâches intégrée à la technique Pomodoro. Créer une tâche démarre automatiquement le timer. Récompenses de fruits à la complétion.",
     tags: ["Next.js", "TypeScript", "MongoDB", "TanStack Query"],
     href: "https://github.com/Callypige/FocusPomomi",
-    live: "https://www.focuspomomi.website",
+    live: "https://focus-pomomi.vercel.app",
     preview: "/focuspomomi-preview.png"
   },
   {
@@ -152,7 +152,7 @@ export default function Home() {
               {projects.map((p) => (
                 <div
                   key={p.title}
-                  className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex justify-between items-start gap-6 hover:border-violet-200 transition-colors"
+                  className="group bg-white border border-[#f0ece4] rounded-xl p-8 flex flex-col sm:flex-row justify-between items-start gap-6 hover:border-violet-200 transition-colors"
                 >
                   {/* Left — project info links to GitHub */}
                   <a
@@ -176,14 +176,14 @@ export default function Home() {
                   </a>
 
                   {/* Right — preview image + GitHub arrow + optional live link */}
-                  <div className="flex flex-col items-end gap-2 shrink-0 mt-1">
+                  <div className="flex flex-col items-end gap-2 sm:shrink-0 w-full sm:w-auto mt-1">
                     {p.preview && (
                       <Image
                         src={p.preview}
                         alt={`Aperçu ${p.title}`}
                         width={320}
                         height={200}
-                        className="rounded-lg border border-[#f0ece4] max-w-xs w-full h-auto object-cover"
+                        className="rounded-lg border border-[#f0ece4] w-full sm:max-w-xs h-auto object-cover"
                       />
                     )}
                     <a
